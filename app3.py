@@ -40,7 +40,7 @@ def signUp():
             
             conn = mysql.connect()
             cursor = conn.cursor()
-            cursor.execute('insert into tbl_user (user_name, user_username, user_address) VALUES (%s, %s, %s)', ( _name,_email,_address))
+            cursor.execute('insert into tbl_user (user_name, user_email, user_address) VALUES (%s, %s, %s)', ( _name,_email,_address))
             conn.commit()
 
             return render_template('signup.html')
@@ -58,7 +58,7 @@ def list():
     try:
             conn = mysql.connect()
             cursor = conn.cursor()
-            cursor.execute ('select user_name, user_username from tbl_user')
+            cursor.execute ('select user_name, user_email, user_address from tbl_user')
             data = cursor.fetchall()
             print(data[0]);
 
